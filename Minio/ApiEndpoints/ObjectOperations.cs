@@ -1406,7 +1406,7 @@ public partial class MinioClient : IObjectOperations
     /// <param name="etags">Etags</param>
     /// <param name="cancellationToken">Optional cancellation token to cancel the operation</param>
     /// <returns></returns>
-    private async Task CompleteMultipartUploadAsync(string bucketName, string objectName, string uploadId,
+    public async Task CompleteMultipartUploadAsync(string bucketName, string objectName, string uploadId,
         Dictionary<int, string> etags, CancellationToken cancellationToken)
     {
         var requestMessageBuilder = await CreateRequest(HttpMethod.Post, bucketName,
@@ -1440,7 +1440,7 @@ public partial class MinioClient : IObjectOperations
     /// <param name="uploadId"></param>
     /// <param name="cancellationToken">Optional cancellation token to cancel the operation</param>
     /// <returns></returns>
-    private IObservable<Part> ListParts(string bucketName, string objectName, string uploadId,
+    public IObservable<Part> ListParts(string bucketName, string objectName, string uploadId,
         CancellationToken cancellationToken)
     {
         return Observable.Create<Part>(
@@ -1513,7 +1513,7 @@ public partial class MinioClient : IObjectOperations
     /// <param name="sseHeaders"> Server-side encryption options</param>
     /// <param name="cancellationToken">Optional cancellation token to cancel the operation</param>
     /// <returns></returns>
-    private async Task<string> NewMultipartUploadAsync(string bucketName, string objectName,
+    public async Task<string> NewMultipartUploadAsync(string bucketName, string objectName,
         Dictionary<string, string> metaData, Dictionary<string, string> sseHeaders,
         CancellationToken cancellationToken = default)
     {
